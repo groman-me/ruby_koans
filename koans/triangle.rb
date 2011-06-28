@@ -16,9 +16,19 @@
 def triangle(a, b, c)
   sides=[a,b,c]
   sides.sort!
+  s1=sides[0]
+  s2=sides[1]
+  s3=sides[2]
+
+  if (a<=0 || b<=0 || c<=0)
+    raise TriangleError, "side length can't be zero"
+  elsif (s1 + s2) <= s3
+    raise TriangleError, "wrong sides length"
+  end
+
   if (a==b and a==c)
     :equilateral
-  elsif ((sides[0]==sides[1]) or (sides[1]==sides[2])) and (sides[0]!=sides[2])
+  elsif ((sides[0]==sides[1]) || (sides[1]==sides[2])) && (sides[0]!=sides[2])
     :isosceles
   else
     :scalene
