@@ -30,7 +30,20 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 # Your goal is to write the score method.
 
 def score(dice)
-  # You need to write this method
+  return 0 if dice.nil?
+  res_val = 0
+  (1..6).each do |item|
+    c = dice.find_all {|di| di == item }.size
+    if c>= 3
+      res_val += item == 1 ? 1000 : item * 100
+      c -= 3
+    end
+    if c > 0
+      res_val += 50*c if item == 5
+      res_val += 100*c if item == 1
+    end
+  end
+  res_val
 end
 
 class AboutScoringProject < EdgeCase::Koan
@@ -69,6 +82,7 @@ class AboutScoringProject < EdgeCase::Koan
   def test_score_of_mixed_is_sum
     assert_equal 250, score([2,5,2,2,3])
     assert_equal 550, score([5,5,5,5])
+    assert_equal 400, score([4,4,4,4])
   end
 
 end
