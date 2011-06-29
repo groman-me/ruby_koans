@@ -9,7 +9,6 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
      size.times do
        @values << rand(5)+1
      end
-#     @values = (1..size).to_a
    end
  end
 
