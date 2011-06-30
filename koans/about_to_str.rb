@@ -18,7 +18,7 @@ class AboutToStr < EdgeCase::Koan
       File.exist?(CanNotBeTreatedAsString.new)
     end
   end
-<zombie>
+
   # ------------------------------------------------------------------
 
   class CanBeTreatedAsString
